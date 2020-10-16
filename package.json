@@ -9,10 +9,10 @@
   "files": [
     "bin"
   ],
-  "homepage": "https://github.com/kdydesign/nuxt-iconfont-generator",
-  "repository": "https://github.com/kdydesign/nuxt-iconfont-generator",
+  "homepage": "https://github.com/kdydesign/vuepress-cli",
+  "repository": "https://github.com/kdydesign/vuepress-cli",
   "bugs": {
-    "url": "https://github.com/kdydesign/nuxt-iconfont-generator/issues",
+    "url": "https://github.com/kdydesign/vuepress-cli/issues",
     "email": "kdydesign@gmail.com"
   },
   "keywords": [
