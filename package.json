@@ -1,0 +1,32 @@
+{
+  "name": "vuepress-cli",
+  "description": "Command line interface to help you use VuePress",
+  "version": "1.0.0",
+  "license": "MIT",
+  "bin": {
+    "vpc": "bin/cli.js"
+  },
+  "files": [
+    "bin"
+  ],
+  "homepage": "https://github.com/kdydesign/nuxt-iconfont-generator",
+  "repository": "https://github.com/kdydesign/nuxt-iconfont-generator",
+  "bugs": {
+    "url": "https://github.com/kdydesign/nuxt-iconfont-generator/issues",
+    "email": "kdydesign@gmail.com"
+  },
+  "keywords": [
+    "vuepress",
+    "vuepress-cli"
+  ],
+  "authors": [
+    "Dev.DY <kdydesign@gmail.com>"
+  ],
+  "dependencies": {
+    "cac": "^6.6.1",
+    "chalk": "^4.1.0",
+    "handlebars": "^4.7.6",
+    "mkdirp": "^1.0.4",
+    "moment": "^2.29.1"
+  }
+}
