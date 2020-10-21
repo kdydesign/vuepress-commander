@@ -5,6 +5,38 @@ const handlebars = require('handlebars')
 const moment = require('moment')
 const { red } = require('chalk')
 
+/**
+ * initial configuration
+ *
+ * @returns {{git: *, dest: string}}
+ */
+exports.initConfig = () => {
+  const configPath = `${process.cwd()}/vpc.config.js`
+  let defaultConfig = {
+    basePath: 'docs',
+    git: void 0,
+    dest: '.vuepress/dist'
+  }
+
+  try {
+    if (existsSync(configPath)) {
+      const vpcConfig = require(`${process.cwd()}/vpc.config.js`)
+
+      defaultConfig = Object.assign(defaultConfig, vpcConfig)
+    }
+
+    return defaultConfig
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+/**
+ * write file
+ *
+ * @param content
+ * @param dist
+ */
 function writeFile (content, dist) {
   if (existsSync(dist)) {
     console.trace(red('이미 같은 이름의 포스트가 존재합니다.'))
@@ -15,17 +47,22 @@ function writeFile (content, dist) {
   writeFileSync(dist, content)
 }
 
+/**
+ * get locale
+ *
+ * @returns {*}
+ */
 exports.getLocale = () => {
   return Intl.DateTimeFormat().resolvedOptions().locale.split('-')[0]
 }
 
-exports.makeTemplate = (postName, cliOptions) => {
-  let folder = process.cwd()
-
-  if (cliOptions.folder) {
-    folder = join(folder, cliOptions.folder)
-  }
-
+/**
+ * make template
+ *
+ * @param postName
+ * @param cliOptions
+ */
+exports.makeTemplate = (postName, folder) => {
   const postTemplate = resolve(__dirname, '../templates/post.hbs')
   const makePost = join(folder, `${postName}.md`)
   const source = readFileSync(postTemplate, 'utf8')

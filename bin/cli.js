@@ -1,63 +1,69 @@
 #!/usr/bin/env node
 const cac = require('cac')
 const { cyan } = require('chalk')
-const { spawn } = require('child_process')
+const { join } = require('path')
 const { version } = require('../package.json')
 
-const { makeTemplate } = require('./util')
+const { initConfig } = require('./util')
+const { newPost, vuepressCmd, cleanDest, deploy } = require('./action')
 
 const cli = cac('vpc')
+const vpcConfig = initConfig()
 
 cli
   .command('new <post-name>', 'Create a new post.')
   .option('-f, --folder [folder]', '새 포스트를 생성할 디렉토리를 지정합니다.')
   .action((postName = 'new-post', cliOptions) => {
-    makeTemplate(postName, cliOptions)
+    let folder = `${process.cwd()}/${vpcConfig.basePath}`
+
+    if (cliOptions.folder) {
+      folder = join(folder, cliOptions.folder)
+    }
+
+    newPost(postName, folder)
 
     console.log()
     console.log(cyan('✨ 새 포스트를 생성하였습니다.'))
   })
 
 cli
-  .command('dev [source-dir]', '로컬 서버를 실행합니다.')
+  .command('serve [source-dir]', '로컬 서버를 실행합니다.')
   .action((sourceDir = 'src', cliOptions) => {
-    console.log()
-    console.log(cyan('✨ 로컬 서버를 실행합니다.'), sourceDir)
-    const child = spawn('vuepress', ['dev'], { shell: true })
-
-    child.stdout.setEncoding('utf8')
-    child.stdout.on('data', (data) => {
-      process.stdout.write(data)
-    })
-
-    child.stderr.on('data', (data) => {
-      process.stdout.write(data)
-    })
-
-    child.on('exit', (data) => {
-      process.stdout.write('I\'m done!')
+    vuepressCmd('dev', {
+      startMsg: '✨ 로컬 서버를 실행합니다.',
+      endMsg: '로걸 서버가 구동되었습니다.'
     })
   })
 
 cli
-  .command('build [source-dir]', '빌드합니다.')
+  .command('generate [source-dir]', '빌드합니다.')
   .action((sourceDir = 'src', cliOptions) => {
-    console.log()
-    console.log(cyan('✨ 빌드합니다.'), sourceDir)
-    const child = spawn('vuepress', ['build'], { shell: true })
-
-    child.stdout.setEncoding('utf8')
-    child.stdout.on('data', (data) => {
-      process.stdout.write(data)
+    vuepressCmd('build', {
+      startMsg: '✨ 빌드합니다.',
+      endMsg: '빌드에 성공하였습니다.'
     })
+  })
 
-    child.stderr.on('data', (data) => {
-      process.stdout.write(data)
-    })
+cli
+  .command('clean [clean-dir]', '빌드 삭제.')
+  .action((cleanDir, cliOptions) => {
+    let destDir = cleanDir
 
-    child.on('exit', (data) => {
-      process.stdout.write('I\'m done!')
-    })
+    if (!cleanDir && !vpcConfig.dest) {
+      destDir = '.vuepress/dist'
+    }
+
+    if (!cleanDir && vpcConfig.dest) {
+      destDir = vpcConfig.dest
+    }
+
+    cleanDest(`${process.cwd()}/${destDir}`)
+  })
+
+cli
+  .command('deploy', '빌드 삭제.')
+  .action((destDir = 'dist', cliOptions) => {
+    deploy(vpcConfig)
   })
 
 cli.help()
