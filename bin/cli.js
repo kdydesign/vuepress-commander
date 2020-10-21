@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const cac = require('cac')
-const { cyan } = require('chalk')
+const { cyan, red } = require('chalk')
 const { join } = require('path')
 const { version } = require('../package.json')
 
@@ -12,7 +12,7 @@ const vpcConfig = initConfig()
 
 cli
   .command('new <post-name>', 'Create a new post.')
-  .option('-f, --folder [folder]', '새 포스트를 생성할 디렉토리를 지정합니다.')
+  .option('-f, --folder [folder]', 'Specify the directory in which to create the new post.')
   .action((postName = 'new-post', cliOptions) => {
     let folder = `${process.cwd()}/${vpcConfig.basePath}`
 
@@ -23,29 +23,29 @@ cli
     newPost(postName, folder)
 
     console.log()
-    console.log(cyan('✨ 새 포스트를 생성하였습니다.'))
+    console.log(cyan('✨ You have created a new post.'))
   })
 
 cli
-  .command('serve [source-dir]', '로컬 서버를 실행합니다.')
-  .action((sourceDir = 'src', cliOptions) => {
+  .command('serve', 'Runs the local server.')
+  .action(() => {
     vuepressCmd('dev', {
-      startMsg: '✨ 로컬 서버를 실행합니다.',
-      endMsg: '로걸 서버가 구동되었습니다.'
+      startMsg: '✨ Runs the local server.',
+      endMsg: 'Local server is running.'
     })
   })
 
 cli
-  .command('generate [source-dir]', '빌드합니다.')
-  .action((sourceDir = 'src', cliOptions) => {
+  .command('generate', 'Builds as a static page.')
+  .action(() => {
     vuepressCmd('build', {
-      startMsg: '✨ 빌드합니다.',
-      endMsg: '빌드에 성공하였습니다.'
+      startMsg: '✨ Builds as a static page.',
+      endMsg: 'Build succeeded.'
     })
   })
 
 cli
-  .command('clean [clean-dir]', '빌드 삭제.')
+  .command('clean [clean-dir]', 'Delete the build result.')
   .action((cleanDir, cliOptions) => {
     let destDir = cleanDir
 
@@ -61,10 +61,17 @@ cli
   })
 
 cli
-  .command('deploy', '빌드 삭제.')
+  .command('deploy', 'Deploy the build results to the git.')
   .action((destDir = 'dist', cliOptions) => {
     deploy(vpcConfig)
   })
+
+cli.on('command:*', () => {
+  console.error(red('Unknown command: %s', cli.args.join(' ')))
+  cli.outputHelp()
+
+  process.exit(1)
+})
 
 cli.help()
 

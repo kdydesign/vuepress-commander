@@ -71,3 +71,21 @@ exports.makeTemplate = (postName, folder) => {
 
   writeFile(ctx, makePost)
 }
+
+/**
+ * check dist
+ *
+ * @param path
+ * @returns {boolean}
+ */
+exports.isDist = (path) => {
+  try {
+    if (existsSync(path)) {
+      return true
+    }
+  } catch (err) {
+    console.error(err)
+  }
+
+  return false
+}
