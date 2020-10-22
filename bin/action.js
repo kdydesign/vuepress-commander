@@ -9,9 +9,6 @@ const { makeTemplate, isDist } = require('./util')
 
 /**
  * new post
- *
- * @param postName
- * @param folder
  */
 exports.newPost = (postName, folder) => {
   makeTemplate(postName, folder)
@@ -19,10 +16,6 @@ exports.newPost = (postName, folder) => {
 
 /**
  * vuepress command
- *
- * @param cmd
- * @param startMsg
- * @param endMsg
  */
 exports.vuepressCmd = (cmd, { startMsg, endMsg }) => {
   const progress = ora(cyan(startMsg)).start()
@@ -40,8 +33,6 @@ exports.vuepressCmd = (cmd, { startMsg, endMsg }) => {
 
 /**
  * build clean
- *
- * @param destDir
  */
 exports.cleanDest = (destDir) => {
   rimraf.sync(destDir)
@@ -51,9 +42,6 @@ exports.cleanDest = (destDir) => {
 
 /**
  * git deploy
- *
- * @param git
- * @returns {Promise<void>}
  */
 exports.deploy = async ({ git, dest }) => {
   const baseDir = join(process.cwd(), dest)

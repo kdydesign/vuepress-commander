@@ -7,8 +7,6 @@ const { red } = require('chalk')
 
 /**
  * initial configuration
- *
- * @returns {{git: *, dest: string}}
  */
 exports.initConfig = () => {
   const configPath = `${process.cwd()}/vpc.config.js`
@@ -33,9 +31,6 @@ exports.initConfig = () => {
 
 /**
  * write file
- *
- * @param content
- * @param dist
  */
 function writeFile (content, dist) {
   if (existsSync(dist)) {
@@ -49,8 +44,6 @@ function writeFile (content, dist) {
 
 /**
  * get locale
- *
- * @returns {*}
  */
 exports.getLocale = () => {
   return Intl.DateTimeFormat().resolvedOptions().locale.split('-')[0]
@@ -58,9 +51,6 @@ exports.getLocale = () => {
 
 /**
  * make template
- *
- * @param postName
- * @param cliOptions
  */
 exports.makeTemplate = (postName, folder) => {
   const postTemplate = resolve(__dirname, '../templates/post.hbs')
@@ -74,15 +64,10 @@ exports.makeTemplate = (postName, folder) => {
 
 /**
  * check dist
- *
- * @param path
- * @returns {boolean}
  */
 exports.isDist = (path) => {
   try {
-    if (existsSync(path)) {
-      return true
-    }
+    return existsSync(path)
   } catch (err) {
     console.error(err)
   }
