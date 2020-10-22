@@ -1,4 +1,4 @@
-# Vuepress-CLI
+# Vuepress-Commander
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![Circle CI][circle-ci-src]][circle-ci-href]
@@ -160,7 +160,7 @@ The path where the results will be stored at `build`.
 * Default: `.vuepress/dist`
 
 ## Help-Me
-Do you have any other ideas? [Please help me](https://github.com/kdydesign/vuepress-cli/issues).
+Do you have any other ideas? [Please help me](https://github.com/kdydesign/vuepress-commander/issues).
 
 ## License
 [MIT License](./LICENSE)
@@ -168,16 +168,16 @@ Copyright (c) [Dev.DY](https://kdydesign.github.io/)
 
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/vuepress-cli?style=flat-square
-[npm-version-href]: https://npmjs.com/package/vuepress-cli
-[npm-downloads-src]: https://img.shields.io/npm/dt/vuepress-cli?style=flat-square
-[npm-downloads-href]: https://npmjs.com/package/vuepress-cli
-[circle-ci-src]: https://img.shields.io/circleci/project/github/kdydesign/vuepress-cli/master.svg?style=flat-square
-[circle-ci-href]: https://circleci.com/gh/kdydesign/vuepress-cli/tree/master
-[codecov-src]: https://img.shields.io/codecov/c/github/kdydesign/vuepress-cli.svg?style=flat-square
-[codecov-href]: https://codecov.io/gh/kdydesign/vuepress-cli
-[david-dm-src]: https://david-dm.org/kdydesign/vuepress-cli/status.svg?style=flat-square
-[david-dm-href]: https://david-dm.org/kdydesign/vuepress-cli
+[npm-version-src]: https://img.shields.io/npm/v/vuepress-commander?style=flat-square
+[npm-version-href]: https://npmjs.com/package/vuepress-commander
+[npm-downloads-src]: https://img.shields.io/npm/dt/vuepress-commander?style=flat-square
+[npm-downloads-href]: https://npmjs.com/package/vuepress-commander
+[circle-ci-src]: https://img.shields.io/circleci/project/github/kdydesign/vuepress-commander/master.svg?style=flat-square
+[circle-ci-href]: https://circleci.com/gh/kdydesign/vuepress-commander/tree/master
+[codecov-src]: https://img.shields.io/codecov/c/github/kdydesign/vuepress-commander.svg?style=flat-square
+[codecov-href]: https://codecov.io/gh/kdydesign/vuepress-commander
+[david-dm-src]: https://david-dm.org/kdydesign/vuepress-commander/status.svg?style=flat-square
+[david-dm-href]: https://david-dm.org/kdydesign/vuepress-commander
 [standard-js-src]: https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square
 [standard-js-href]: https://standardjs.com
-[license-src]: https://img.shields.io/npm/l/vuepress-cli?style=flat-square
+[license-src]: https://img.shields.io/npm/l/vuepress-commander?style=flat-square
