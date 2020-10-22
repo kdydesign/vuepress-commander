@@ -6,12 +6,12 @@
 [![Standard JS][standard-js-src]][standard-js-href]
 ![License][license-src]
 
-> vuepress-cli makes it easier to create and deploy posts in the vuepress using cli.
+> vuepress-commander makes it easier to create and deploy posts in the vuepress using cli.
 
 ## Introduction
 The cli in `vuepress` is cumbersome. 
-To compensate for this, we created a `vuepress-cli`. 
-`vuepress-cli` now solves the task of creating new posts each time. You can also easily distribute build results to github.
+To compensate for this, we created a `vuepress-commander`. 
+`vuepress-commander` now solves the task of creating new posts each time. You can also easily distribute build results to github.
 
 
 **Features :**
@@ -25,16 +25,16 @@ To compensate for this, we created a `vuepress-cli`.
 ## install
 **npm**
 ```sh
-npm install -g vuepress-cli
+npm install -g vuepress-commander
 ```
 
 **yarn**
 ```sh
-yarn add global vuepress-cli
+yarn add global vuepress-commander
 ```
 
 ## Command List
-The `vuepress-cli` runs with the `vpc` command. Try using the `--help` command.
+The `vuepress-commander` runs with the `vpc` command. Try using the `--help` command.
 
 ```sh
 vpc --help
@@ -125,7 +125,7 @@ vpc deploy
 ```
 
 ## configuration
-The `vuepress-cli` can specify options for the command through the settings file. 
+The `vuepress-commander` can specify options for the command through the settings file. 
 Create the `vpc.config.js` file in the top-level path. Define all options in `vpc.config.js`.
 
 Try it now.

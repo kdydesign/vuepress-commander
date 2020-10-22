@@ -1,5 +1,5 @@
 {
-  "name": "vuepress-cli",
+  "name": "vuepress-commander",
   "description": "Command line interface to help you use VuePress",
   "version": "1.0.1-alpha.0",
   "license": "MIT",
@@ -23,6 +23,7 @@
   },
   "keywords": [
     "vuepress",
+    "vuepress-commander",
     "vuepress-cli",
     "cli",
     "vue",
