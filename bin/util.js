@@ -34,7 +34,7 @@ exports.initConfig = () => {
  */
 function writeFile (content, dist) {
   if (existsSync(dist)) {
-    console.trace(red('이미 같은 이름의 포스트가 존재합니다.'))
+    console.trace(red('A post with the same name already exists.'))
     process.exit(1)
   }
 
