@@ -23,14 +23,14 @@ cli
     newPost(postName, folder)
 
     console.log()
-    console.log(cyan('✨ You have created a new post.'))
+    console.log(cyan('🎉 You have created a new post.'))
   })
 
 cli
   .command('serve', 'Runs the local server.')
   .action(() => {
     vuepressCmd('dev', {
-      startMsg: '✨ Runs the local server.',
+      startMsg: '🚀 Runs the local server.',
       endMsg: 'Local server is running.'
     })
   })
@@ -46,7 +46,7 @@ cli
 
 cli
   .command('clean [clean-dir]', 'Delete the build result.')
-  .action((cleanDir, cliOptions) => {
+  .action((cleanDir) => {
     let destDir = cleanDir
 
     if (!cleanDir && !vpcConfig.dest) {
@@ -62,12 +62,12 @@ cli
 
 cli
   .command('deploy', 'Deploy the build results to the git.')
-  .action((destDir = 'dist', cliOptions) => {
+  .action(() => {
     deploy(vpcConfig)
   })
 
 cli.on('command:*', () => {
-  console.error(red('Unknown command: %s', cli.args.join(' ')))
+  console.error(red('❗ Unknown command: %s', cli.args.join(' ')))
   cli.outputHelp()
 
   process.exit(1)

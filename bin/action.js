@@ -25,13 +25,13 @@ exports.newPost = (postName, folder) => {
  * @param endMsg
  */
 exports.vuepressCmd = (cmd, { startMsg, endMsg }) => {
-  const throbber = ora(cyan(startMsg)).start()
+  const progress = ora(cyan(startMsg)).start()
   const child = spawn('vuepress', [cmd], { shell: true })
 
   child.stdout.setEncoding('utf8')
   child.stdout.on('data', data => {
     process.stdout.write(data)
-    throbber.stop()
+    progress.stop()
   })
   child.stderr.on('data', data => process.stdout.write(data))
 
@@ -39,7 +39,7 @@ exports.vuepressCmd = (cmd, { startMsg, endMsg }) => {
 }
 
 /**
- * clean build
+ * build clean
  *
  * @param destDir
  */
@@ -57,10 +57,10 @@ exports.cleanDest = (destDir) => {
  */
 exports.deploy = async ({ git, dest }) => {
   const baseDir = join(process.cwd(), dest)
-  const throbber = ora(bgBlue(black('[Deploy]'))).start()
+  const progress = ora(bgBlue(black('[Deploy]'))).start()
 
   if (!isDist(baseDir)) {
-    throbber.stopAndPersist({
+    progress.stopAndPersist({
       text: `${red('Build result does not exist. Please proceed with the build with the command')} ${green('vpc generate')}`
     })
 
@@ -109,9 +109,9 @@ exports.deploy = async ({ git, dest }) => {
 
       console.log(green(': Successfully uploaded file to git...'))
       console.log()
-      throbber.stopAndPersist({
-        symbol: green('✔'),
-        text: green('Deployment completed successfully.')
+      progress.stopAndPersist({
+        symbol: cyan('✔'),
+        text: cyan('Deployment completed successfully.')
       })
     })
   } catch (err) {
