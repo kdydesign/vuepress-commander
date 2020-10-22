@@ -1,7 +1,7 @@
 {
   "name": "vuepress-cli",
   "description": "Command line interface to help you use VuePress",
-  "version": "1.0.0",
+  "version": "1.0.1-alpha.0",
   "license": "MIT",
   "bin": {
     "vpc": "bin/cli.js"
@@ -11,7 +11,9 @@
     "templates"
   ],
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "yarn lint && jest",
+    "release": "yarn test && standard-version && git push --follow-tags && npm publish"
   },
   "homepage": "https://github.com/kdydesign/vuepress-cli",
   "repository": "https://github.com/kdydesign/vuepress-cli",
