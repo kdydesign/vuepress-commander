@@ -1,6 +1,7 @@
 module.exports = {
   root: true,
   parserOptions: {
+    parser: 'babel-eslint',
     sourceType: 'module'
   },
   env: {
@@ -14,5 +15,8 @@ module.exports = {
     'plugin:import/errors',
     'plugin:import/warnings',
     'eslint:recommended'
-  ]
+  ],
+  rules: {
+    'no-void': 'off'
+  }
 }
