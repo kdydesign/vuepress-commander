@@ -112,6 +112,7 @@ vpc clean docs/dist     //  Delete 'docs/dist'
 Distribute built deliverables to `github`.
 
 ⚠️To deploy to `github`, the basic settings for `git` must be applied.
+
 ⚠️In the pre-release version, the `remote name` is `origin` and the `branch name` is `master`.
 
 **e.g**
