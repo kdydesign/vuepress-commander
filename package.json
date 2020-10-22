@@ -15,10 +15,10 @@
     "test": "yarn lint && jest",
     "release": "yarn test && standard-version && git push --follow-tags && npm publish"
   },
-  "homepage": "https://github.com/kdydesign/vuepress-cli",
-  "repository": "https://github.com/kdydesign/vuepress-cli",
+  "homepage": "https://github.com/kdydesign/vuepress-commander",
+  "repository": "https://github.com/kdydesign/vuepress-commander",
   "bugs": {
-    "url": "https://github.com/kdydesign/vuepress-cli/issues",
+    "url": "https://github.com/kdydesign/vuepress-commander/issues",
     "email": "kdydesign@gmail.com"
   },
   "keywords": [
