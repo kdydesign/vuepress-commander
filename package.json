@@ -1,7 +1,7 @@
 {
   "name": "vuepress-commander",
   "description": "Command line interface to help you use VuePress",
-  "version": "1.0.1-alpha.0",
+  "version": "1.0.1-alpha.1",
   "license": "MIT",
   "bin": {
     "vpc": "bin/cli.js"
