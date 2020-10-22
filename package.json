@@ -21,7 +21,10 @@
   },
   "keywords": [
     "vuepress",
-    "vuepress-cli"
+    "vuepress-cli",
+    "cli",
+    "vue",
+    "web"
   ],
   "authors": [
     "Dev.DY <kdydesign@gmail.com>"
